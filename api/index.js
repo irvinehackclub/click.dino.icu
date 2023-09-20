@@ -11,9 +11,6 @@ const landingPage = markdown => /*html*/`<!DOCTYPE html><html lang="en">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     </head>
     <body>
-        <h1>click.dino.icu</h1>
-        <p>Short URLs for Dinosaurs</p>
-        <hr />
         ${parseMarkdown(markdown)}
     </body>
 </html>`;
@@ -43,6 +40,4 @@ export default function handler (request, response) {
     }
 
     response.redirect(307, destination);
-
-    response.send(query);
 }
