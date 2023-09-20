@@ -1,0 +1,37 @@
+name: Analyze Issue and Create Pull Request
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  analyzeAndCreatePR:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Parse Issue Body
+        id: parseIssue
+        run: |
+          echo "### Source" >> parsed.yml
+          echo "$ISSUE_BODY" | awk '/### Source/{flag=1; next} /### Destination/{flag=0} flag' >> parsed.yml
+          echo "### Destination" >> parsed.yml
+          echo "$ISSUE_BODY" | awk '/### Destination/{flag=1; next} /### Additional Information/{flag=0} flag' >> parsed.yml
+
+      - name: Create Pull Request
+        id: createPR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Add link to LINKS.txt
+          branch: add-link
+          base: main
+          title: Add link to LINKS.txt
+          body: |
+            Closes #${{ github.event.issue.number }}
+          files: |
+            LINKS.txt
+        env:
+          ISSUE_BODY: ${{ steps.parseIssue.outputs.stdout }}
