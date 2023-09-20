@@ -2,6 +2,8 @@ name: Analyze Issue and Create Pull Request
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: write
 
 on:
   issues:
