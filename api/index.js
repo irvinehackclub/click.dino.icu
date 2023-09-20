@@ -57,7 +57,7 @@ export default function handler (request, response) {
 
     if (!destination) {
         response.setHeader("Content-Type", "text/html");
-        return response.end(landingPage(notFoundPage()));
+        return response.end(notFoundPage());
     }
 
     response.redirect(307, destination);
