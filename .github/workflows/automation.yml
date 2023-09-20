@@ -5,9 +5,6 @@ on:
     types:
       - opened
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
 jobs:
   analyzeAndCreatePR:
     runs-on: ubuntu-latest
@@ -15,26 +12,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Parse Issue Body
-        id: parseIssue
+      - name: Parse and Add Links
         run: |
-          echo "### Source" >> parsed.yml
-          echo "$ISSUE_BODY" | awk '/### Source/{flag=1; next} /### Destination/{flag=0} flag' >> parsed.yml
-          echo "### Destination" >> parsed.yml
-          echo "$ISSUE_BODY" | awk '/### Destination/{flag=1; next} /### Additional Information/{flag=0} flag' >> parsed.yml
+          echo "$ISSUE_BODY" | awk '/### Source/{flag=1; next} /### Destination/{flag=0} flag' >> LINKS.txt
+          echo " " >> LINKS.txt
+          echo "$ISSUE_BODY" | awk '/### Destination/{flag=1; next} /### Additional Information/{flag=0} flag' >> LINKS.txt
 
       - name: Create Pull Request
         id: createPR
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Add link to LINKS.txt
+          commit-message: ${{ github.event.issue.number }}
           branch: add-link
           base: main
-          title: Add link to LINKS.txt
+          title: ${{ github.event.issue.number }} automated PR
           body: |
             Closes #${{ github.event.issue.number }}
-          files: |
-            LINKS.txt
         env:
           ISSUE_BODY: ${{ steps.parseIssue.outputs.stdout }}
