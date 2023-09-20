@@ -1,6 +1,7 @@
 name: Add short URL
 description: Add a short URL to click.dino.icu
 title: "Add short URL"
+labels: ["URL"]
 body:
   - type: input
     id: source
