@@ -1,6 +1,6 @@
 name: Add short URL
 description: Add a short URL to click.dino.icu
-title: "Short URL: "
+title: "Add short URL"
 body:
   - type: input
     id: source
@@ -23,7 +23,7 @@ body:
     attributes:
       label: Additional Information
       description: What's this short URL for?
-      placeholder: We're just curious!
+      placeholder: ex. a form for the club fair
     validations:
       required: true
   - type: checkboxes
