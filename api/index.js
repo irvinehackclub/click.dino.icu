@@ -15,6 +15,27 @@ const landingPage = markdown => /*html*/`<!DOCTYPE html><html lang="en">
     </body>
 </html>`;
 
+const notFoundPage = markdown => /*html*/`<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>click.dino.icu</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    </head>
+    <body>
+        <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;">
+            <div>
+                <h1>Link Not Found</h1>
+                <p>Perhaps there's a typo?</p>
+            </div>
+        </div>
+        <div style="position: fixed; bottom: 0; right: 0; padding: 1rem;">
+            <p>click.dino.icu</a>
+            <a href="https://click.dino.icu"><small>hey, what's that?</small></a>
+        </div>
+    </body>
+</html>`;
+
 export default function handler (request, response) {
     const query = request.url.split("?")[0].substring(1);
 
