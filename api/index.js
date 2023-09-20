@@ -15,7 +15,7 @@ const landingPage = markdown => /*html*/`<!DOCTYPE html><html lang="en">
     </body>
 </html>`;
 
-const notFoundPage = markdown => /*html*/`<!DOCTYPE html><html lang="en">
+const notFoundPage = () => /*html*/`<!DOCTYPE html><html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,8 +56,8 @@ export default function handler (request, response) {
     const destination = links[query];
 
     if (!destination) {
-        response.statusCode = 404;
-        return response.end("Not Found");
+        response.setHeader("Content-Type", "text/html");
+        return response.end(landingPage(notFoundPage()));
     }
 
     response.redirect(307, destination);
