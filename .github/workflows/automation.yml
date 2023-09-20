@@ -1,5 +1,8 @@
 name: Analyze Issue and Create Pull Request
 
+permissions:
+  contents: write
+
 on:
   issues:
     types:
