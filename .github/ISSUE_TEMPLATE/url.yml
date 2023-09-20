@@ -30,7 +30,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      description: By submitting this issue, you agree to follow Hack Club's [Code of Conduct](https://hackclub.com/conduct)
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I agree to follow Hack Club's Code of Conduct
           required: true
