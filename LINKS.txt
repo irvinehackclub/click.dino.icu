@@ -1,1 +1,2 @@
 test https://hackclub.com
+ihs https://irvine.hackclub.com/welcome
