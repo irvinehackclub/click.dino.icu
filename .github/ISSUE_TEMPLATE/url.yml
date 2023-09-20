@@ -1,21 +1,13 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+name: Add short URL
+description: Add a short URL to click.dino.icu
+title: "Short URL: "
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
   - type: input
-    id: contact
+    id: source
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Source
+      description: Where should the short URL be at?
+      placeholder: ex. hackclub
     validations:
       required: false
   - type: textarea
