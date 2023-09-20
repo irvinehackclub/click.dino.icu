@@ -4,5 +4,6 @@
  * @param {Response} response
  */
 export default function handler (request, response) {
-    response.send(request.url);
+    const query = request.url.split("?")[0];
+    response.send(query);
 }
