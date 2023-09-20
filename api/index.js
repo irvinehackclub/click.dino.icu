@@ -21,17 +21,24 @@ const notFoundPage = () => /*html*/`<!DOCTYPE html><html lang="en">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>click.dino.icu</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+        <style>
+            body, html {
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
     </head>
     <body>
-        <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div style="height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; text-align: center;">
             <div>
                 <h1>Link Not Found</h1>
                 <p>Perhaps there's a typo?</p>
             </div>
-        </div>
-        <div style="position: fixed; bottom: 0px; right: 50%; transform: translateX(-50%); text-align: center; padding: 1rem;">
-            <p>click.dino.icu</p>
-            <a href="https://click.dino.icu"><small>hey, what's that?</small></a>
+
+            <div style="position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); text-align: center; padding: 2rem;">
+                <p>click.dino.icu</p>
+                <a href="https://click.dino.icu"><small>hey, what's that?</small></a>
+            </div>
         </div>
     </body>
 </html>`;
